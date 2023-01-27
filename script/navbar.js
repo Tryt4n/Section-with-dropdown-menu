@@ -43,7 +43,7 @@ function handleSlides(translate, btn, closingBtn = true) {
   closeBtn.setAttribute("aria-hidden", closingBtn);
 }
 
-function handleDefaultStates() {
+export function handleDefaultStates() {
   if (window.innerWidth <= 768) {
     backgroundShadow.classList.remove("background-shadow");
     handleSlides(100, false);
