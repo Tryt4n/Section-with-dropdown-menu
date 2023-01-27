@@ -1,0 +1,227 @@
+@use "../global/colors" as c;
+@use "../global/variables" as v;
+@use "../global/mixins" as *;
+
+.logo {
+  width: v.$logo-width;
+  height: v.$logo-height;
+}
+
+.btn-hamburger {
+  display: none;
+  padding: v.$navbar-item-padding;
+}
+
+.nav {
+  width: 100%;
+  @include flex(row, flex-start, center);
+  padding: v.$navbar-padding;
+  color: c.$medium-gray;
+
+  &__list {
+    width: calc(100vw - v.$logo-width - (2 * v.$navbar-padding));
+    @include flex(row, space-between, center);
+    padding-left: 5rem;
+
+    &__close-btn {
+      display: none;
+    }
+
+    &__informations {
+      @include flex();
+    }
+
+    &__account {
+      @include flex(row, flex-start, center);
+    }
+
+    &--item {
+      margin-left: v.$navbar-item-indentations;
+      padding: v.$navbar-item-padding;
+      transition: v.$main-transition;
+      max-height: calc(v.$font-size + (v.$btn-padding-y * 2) + (v.$btn-border-width * 2));
+
+      &:hover,
+      &:focus {
+        color: c.$almost-black;
+      }
+    }
+
+    & .btn-primary {
+      padding: v.$btn-padding-y 1rem;
+    }
+  }
+}
+
+.features,
+.company {
+  position: relative;
+
+  &--list {
+    position: absolute;
+    z-index: 10;
+    background: c.$white;
+    top: calc(v.$navbar-item-height + v.$navbar-padding + v.$btn-padding-y);
+    right: 0;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 15px hsl(0, 0%, 0%, 0.75);
+    z-index: 101;
+
+    & li {
+      padding-bottom: 0.5rem;
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+.features:has(.nav__list--item) {
+  .nav__list--item {
+    margin-left: 0;
+  }
+}
+
+.align-center {
+  @include flex(row, flex-start, center);
+}
+
+.wrapper {
+  width: fit-content;
+  @include flex();
+  gap: 1rem;
+  padding: v.$navbar-item-padding;
+  width: 100%;
+  transition: v.$main-transition;
+
+  &:hover,
+  &:focus {
+    color: c.$almost-black;
+  }
+}
+
+@media (width > 768px) and (width <= 1024px) {
+  .nav {
+    &__list {
+      padding-left: 2.5rem;
+
+      &--item {
+        margin-left: 1rem;
+      }
+    }
+
+    .features,
+    .company {
+      &--list {
+        padding: 0.75rem;
+        font-size: initial;
+      }
+    }
+  }
+}
+
+@media (width <= 768px) {
+  .btn-hamburger {
+    display: block;
+  }
+
+  .features,
+  .company {
+    position: initial;
+
+    &--list {
+      position: initial;
+      background: initial;
+      margin-left: v.$navbar-item-indentations;
+      box-shadow: none;
+      padding: 0;
+
+      & li {
+        padding-bottom: 1rem;
+        &:first-of-type {
+          padding-top: 1rem;
+        }
+        &:last-of-type {
+          padding-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  .features:has(.nav__list--item) {
+    .nav__list--item {
+      margin-left: 1.5rem;
+    }
+  }
+
+  .wrapper {
+    width: calc(100% - v.$navbar-item-indentations);
+  }
+
+  .nav {
+    position: relative;
+    justify-content: space-between;
+
+    .background-shadow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: c.$opacity25;
+    }
+
+    &__list {
+      position: fixed;
+      overflow-y: scroll;
+      background: c.$almost-white;
+      z-index: 100;
+      padding: 0;
+      @include flex(column);
+      top: 0;
+      right: 0;
+      width: 250px;
+      height: 100vh;
+      transition: v.$main-transition;
+      translate: 100%;
+
+      &__close-btn {
+        display: block;
+        align-self: end;
+        margin: 1.5rem;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+        text-align: end;
+      }
+
+      &__informations {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      &__account {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+
+        & a {
+          text-align: center;
+
+          &:first-of-type {
+            outline-offset: calc(v.$navbar-item-padding * -1);
+          }
+        }
+      }
+
+      &--item {
+        margin: 0;
+        margin: 0 1.5rem;
+        padding: 1rem v.$navbar-item-padding;
+        max-height: 100%;
+      }
+    }
+  }
+}

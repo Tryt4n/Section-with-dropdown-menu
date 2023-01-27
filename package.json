@@ -1,0 +1,21 @@
+{
+  "name": "intro-section-with-dropdown-navigation-main",
+  "version": "1.0.0",
+  "description": "![Design preview for the Intro section with dropdown navigation coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "postcss": "postcss ./dist/styles.css --dir ./dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "postcss-preset-env": "^8.0.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "D": "^1.0.0"
+  }
+}
