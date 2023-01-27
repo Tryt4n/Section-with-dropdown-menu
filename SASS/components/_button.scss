@@ -1,0 +1,38 @@
+@use "../global/colors" as c;
+@use "../global/variables" as v;
+
+.btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  transition: v.$main-transition;
+
+  &:hover,
+  &:focus {
+    color: c.$almost-black;
+  }
+}
+
+.btn-primary {
+  border: 1px solid;
+  border-radius: 1rem;
+  padding: v.$btn-padding-y 1rem;
+}
+
+.btn-info {
+  font-weight: bold;
+  color: c.$white;
+  background-color: c.$almost-black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  border-color: c.$almost-black;
+  transition: v.$main-transition;
+
+  &:hover,
+  &:focus {
+    background: transparent;
+    color: c.$almost-black;
+  }
+}
